@@ -1,12 +1,14 @@
 package classes.services;
 
+import classes.entidades.PicaretaEntidade;
 import enums.Materiais;
 import interfaces.Ferramenta;
 
 public class PicaretaServico implements Ferramenta {
+    PicaretaEntidade picaretaEntidade = new PicaretaEntidade();
 
-    public static int Mine(String material, int durabilidade, int forca, int blocos) {
-        System.out.println("\n=== MINERANDO COM PICARETA DE " + material.toUpperCase() + " ===");
+    public static int Minerar(Materiais material, int durabilidade, int forca, int blocos) {
+        System.out.println("\n=== MINERANDO COM PICARETA DE " + material + " ===");
         System.out.println("Durabilidade atual: " + durabilidade);
         System.out.println("Força: " + forca);
         System.out.println("Blocos a minerar: " + blocos);
@@ -39,10 +41,28 @@ public class PicaretaServico implements Ferramenta {
     }
 
     @Override
-    public String Fabricar(Materiais material, int durabilidade, int forca) {
+    public String Fabricar(Materiais material) {
         System.out.println("\n=== FABRICANDO PICARETA ===");
         System.out.println("Material: " + material);
+
+        int durabilidade = switch (material.name().toLowerCase()) {
+            case "madeira" -> durabilidade = 50;
+            case "pedra" -> durabilidade = 70;
+            case "ferro" -> durabilidade = 100;
+            case "ouro" -> durabilidade = 30;
+            default -> durabilidade = 0;
+        };
+
         System.out.println("Durabilidade: " + durabilidade);
+
+        int forca = switch (material.name().toLowerCase()) {
+                    case "madeira" -> forca = 5;
+                    case "pedra" -> forca = 8;
+                    case "ferro" -> forca = 12;
+                    case "ouro" -> forca = 9;
+                    default -> forca = 0;
+                };
+
         System.out.println("Força: " + forca);
 
         if (durabilidade <= 0 || forca <= 0) {
@@ -50,7 +70,20 @@ public class PicaretaServico implements Ferramenta {
             return null;
         }
 
-        System.out.println("Picareta de " + material + " fabricada com sucesso!");
+        int blocos = switch (material.name().toLowerCase()) {
+            case "madeira" -> blocos = 17;
+            case "pedra" -> blocos = 20;
+            case "ferro" -> blocos = 40;
+            case "ouro" -> blocos = 30;
+            default -> blocos = 0;
+        };
+
+        System.out.println("Picareta de " + material.name().toLowerCase() + " fabricada com sucesso!");
+        String nome = "Picareta de " + material.name().toLowerCase() ;
+
+        PicaretaEntidade picaretaCriada = new PicaretaEntidade(nome,durabilidade, material, blocos, forca);
+        picaretaEntidade.setPicaretas(picaretaCriada);
+
         return "Picareta de " + material + " (D: " + durabilidade + ", F: " + forca + ")";
     }
 

@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<String> picaretas = new ArrayList<>();
         PicaretaServico picaretaService = new PicaretaServico();
 
         System.out.println("""
@@ -15,39 +14,22 @@ public class Main {
                   ╚════════════════════════════════════════════════════════════════════╝\s
                 """);
 
-        String picareta1 = picaretaService.Fabricar(
-                Materiais.MADEIRA,
-                50,
-                5
-                );
+        //Fabricar
+        String picareta1 = picaretaService.Fabricar(Materiais.MADEIRA);
 
-        picaretas.add(picareta1);
+        String picareta2 = picaretaService.Fabricar(Materiais.PEDRA);
 
-        String picareta2 = picaretaService.Fabricar(
-                Materiais.PEDRA,
-                70,
-                8
-        );
+        String picareta3 = picaretaService.Fabricar(Materiais.FERRO);
 
-        picaretas.add(picareta2);
+//        System.out.println("\nPicaretas no inventario:");
+//        for (String picareta : picaretaService){
+//            System.out.println(" • " + picareta);
+//        }
 
-        String picareta3 = picaretaService.Fabricar(
-                Materiais.FERRO,
-                100,
-                12
-        );
+        //Minera
 
-        picaretas.add(picareta3);
+        //Reparar
 
-        System.out.println("\nPicaretas no inventario:");
-        for (String picareta : picaretas){
-            System.out.println(" • " + picareta);
-        }
-
-        //minerar
-
-        //reparar
-
-        //estado final
+        //Estado final
     }
 }
