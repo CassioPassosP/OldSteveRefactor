@@ -1,15 +1,9 @@
-package classes;
+package classes.services;
 
 import enums.Materiais;
 import interfaces.Ferramenta;
 
-public class Picareta extends FerramentaAbstrata implements Ferramenta {
-    private int blocos;
-
-    public Picareta(String nome, int durabilidade, Materiais materiais, int blocos) {
-        super(nome, durabilidade, materiais);
-        this.blocos = blocos;
-    }
+public class PicaretaServico implements Ferramenta {
 
     public static int Mine(String material, int durabilidade, int forca, int blocos) {
         System.out.println("\n=== MINERANDO COM PICARETA DE " + material.toUpperCase() + " ===");
@@ -45,7 +39,7 @@ public class Picareta extends FerramentaAbstrata implements Ferramenta {
     }
 
     @Override
-    public String Fabricar(String material, int durabilidade, int forca) {
+    public String Fabricar(Materiais material, int durabilidade, int forca) {
         System.out.println("\n=== FABRICANDO PICARETA ===");
         System.out.println("Material: " + material);
         System.out.println("Durabilidade: " + durabilidade);
@@ -61,20 +55,18 @@ public class Picareta extends FerramentaAbstrata implements Ferramenta {
     }
 
     @Override
-    public int Reparar(String material, int durabilidadeAtual, int quantidade) {
-        System.out.println("\n=== REPARANDO PICARETA DE " + material.toUpperCase() + " ===");
+    public int Reparar(Materiais material, int durabilidadeAtual, int quantidade) {
+        System.out.println("\n=== REPARANDO PICARETA DE " + material + " ===");
         System.out.println("Durabilidade atual: " + durabilidadeAtual);
         System.out.println("Quantidade a reparar: " + quantidade);
 
         int durabilidadeNova = durabilidadeAtual + quantidade;
         int limiteMaximo = 0;
 
-        switch (material.toLowerCase()) {
+        switch (material.name().toLowerCase()) {
             case "madeira": limiteMaximo = 50; break;
             case "pedra": limiteMaximo = 70; break;
             case "ferro": limiteMaximo = 100; break;
-            case "diamante": limiteMaximo = 150; break;
-            case "netherite": limiteMaximo = 200; break;
             case "ouro": limiteMaximo = 30; break;
             default: limiteMaximo = 60;
         }

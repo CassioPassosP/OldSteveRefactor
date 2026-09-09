@@ -1,8 +1,10 @@
 package interfaces;
 
+import enums.Materiais;
+
 public interface Ferramenta {
 
-    String Fabricar(String material, int durabilidade, int forca);
+    String Fabricar(Materiais material, int durabilidade, int forca);
 
-    int Reparar(String material, int durabilidadeAtual, int quantidade);
+    int Reparar(Materiais material, int durabilidadeAtual, int quantidade);
 }

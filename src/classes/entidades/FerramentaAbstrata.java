@@ -1,4 +1,4 @@
-package classes;
+package classes.entidades;
 
 import enums.Materiais;
 
@@ -6,6 +6,9 @@ public class FerramentaAbstrata {
     private String name;
     private int durability;
     private static Materiais materials;
+
+    public FerramentaAbstrata() {
+    }
 
     public FerramentaAbstrata(String name, int durability, Materiais materials) {
         this.name = name;
