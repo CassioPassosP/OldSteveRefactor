@@ -53,20 +53,20 @@ public class PicaretaServico implements Ferramenta {
         System.out.println("Material: " + material);
 
         int durabilidade = switch (material.name().toLowerCase()) {
-            case "madeira" -> durabilidade = 50;
-            case "pedra" -> durabilidade = 70;
-            case "ferro" -> durabilidade = 100;
-            case "ouro" -> durabilidade = 31;
+            case "madeira" -> durabilidade = Materiais.MADEIRA.getDurabilidade();
+            case "pedra" -> durabilidade = Materiais.PEDRA.getDurabilidade();
+            case "ferro" -> durabilidade = Materiais.FERRO.getDurabilidade();
+            case "ouro" -> durabilidade = Materiais.OURO.getDurabilidade();
             default -> durabilidade = 60;
         };
 
         System.out.println("Durabilidade: " + durabilidade);
 
         int forca = switch (material.name().toLowerCase()) {
-                    case "madeira" -> forca = 5;
-                    case "pedra" -> forca = 8;
-                    case "ferro" -> forca = 12;
-                    case "ouro" -> forca = 9;
+                    case "madeira" -> forca = Materiais.MADEIRA.getForca();
+                    case "pedra" -> forca = Materiais.PEDRA.getForca();
+                    case "ferro" -> forca = Materiais.FERRO.getForca();
+                    case "ouro" -> forca = Materiais.OURO.getForca();
                     default -> forca = 6;
                 };
 
@@ -108,10 +108,10 @@ public class PicaretaServico implements Ferramenta {
         int durabilidadeNova = durabilidadeAtual + quantidade;
 
         int limiteMaximo = switch (material.name().toLowerCase()) {
-            case "madeira" -> limiteMaximo = 50;
-            case "pedra" -> limiteMaximo = 70;
-            case "ferro" -> limiteMaximo = 100;
-            case "ouro" -> limiteMaximo = 30;
+            case "madeira" -> limiteMaximo = Materiais.MADEIRA.getDurabilidade();
+            case "pedra" -> limiteMaximo = Materiais.PEDRA.getDurabilidade();
+            case "ferro" -> limiteMaximo = Materiais.FERRO.getDurabilidade();
+            case "ouro" -> limiteMaximo = Materiais.OURO.getDurabilidade();
             default -> limiteMaximo = 60;
         };
 
