@@ -49,4 +49,11 @@ public class FerramentaAbstrata {
     public void setMaterial(Materiais material) {
         FerramentaAbstrata.material = material;
     }
+
+    @Override
+    public String toString() {
+        return  nome +
+                "\n   durabilidade: " + durabilidade +
+                "\n   forca: " + forca ;
+    }
 }

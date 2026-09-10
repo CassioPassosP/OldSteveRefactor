@@ -8,11 +8,16 @@ public class PicaretaServico implements Ferramenta {
     PicaretaEntidade picaretaEntidade = new PicaretaEntidade();
 
     @Override
-    public int Minerar(Materiais material, int durabilidade, int forca, int blocos) {
+    public int Minerar(String nome,Materiais material, int durabilidade, int forca, int blocos) {
         System.out.println("\n=== MINERANDO COM PICARETA DE " + material + " ===");
         System.out.println("Durabilidade atual: " + durabilidade);
         System.out.println("Força: " + forca);
         System.out.println("Blocos a minerar: " + blocos);
+
+        PicaretaEntidade picaretaSelecionada = picaretaEntidade.getPicaretas().stream()
+                .filter(picareta -> picareta.getNome().equalsIgnoreCase(nome))
+                .findFirst()
+                .orElse(null);
 
         if (durabilidade <= 0) {
             System.out.println("Picareta quebrada!");
@@ -38,6 +43,7 @@ public class PicaretaServico implements Ferramenta {
             System.out.println(" A picareta de " + material.name().toLowerCase() + " quebrou completamente!");
         }
 
+        picaretaSelecionada.setDurabilidade(durabilidadeRestante);
         return durabilidadeRestante;
     }
 
@@ -89,10 +95,15 @@ public class PicaretaServico implements Ferramenta {
     }
 
     @Override
-    public int Reparar(Materiais material, int durabilidadeAtual, int quantidade) {
+    public int Reparar(String nome, Materiais material, int durabilidadeAtual, int quantidade) {
         System.out.println("\n=== REPARANDO PICARETA DE " + material + " ===");
         System.out.println("Durabilidade atual: " + durabilidadeAtual);
         System.out.println("Quantidade a reparar: " + quantidade);
+
+        PicaretaEntidade picaretaSelecionada = picaretaEntidade.getPicaretas().stream()
+                .filter(picareta -> picareta.getNome().equalsIgnoreCase(nome))
+                .findFirst()
+                .orElse(null);
 
         int durabilidadeNova = durabilidadeAtual + quantidade;
 
@@ -110,6 +121,8 @@ public class PicaretaServico implements Ferramenta {
         }
 
         System.out.println(" Durabilidade nova: " + durabilidadeNova);
+
+        picaretaSelecionada.setDurabilidade(durabilidadeNova);
         return durabilidadeNova;
     }
 }

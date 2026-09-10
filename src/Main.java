@@ -35,10 +35,16 @@ public class Main {
                 .findFirst()
                 .orElse(null);
 
-        int novaDurabilidade = picaretaService.Minerar(picaretaStream.getMaterial(),picaretaStream.getDurabilidade(), picaretaStream.getForca(), picaretaStream.getBlocos());
+        int novaDurabilidade = picaretaService.Minerar(picaretaStream.getNome(), picaretaStream.getMaterial(),picaretaStream.getDurabilidade(), picaretaStream.getForca(), picaretaStream.getBlocos());
 
         //Reparar
+        int reparar = picaretaService.Reparar(picaretaStream.getNome(), picaretaStream.getMaterial(),picaretaStream.getDurabilidade(), 45);
 
         //Estado final
+        System.out.println("\nEstado final das picaretas:");
+        for (PicaretaEntidade picareta : picaretaEntidade.getPicaretas()){
+            System.out.println(" • " + picareta.toString());
+        }
+
     }
 }
