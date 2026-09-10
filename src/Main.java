@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         PicaretaServico picaretaService = new PicaretaServico();
+        PicaretaEntidade picaretaEntidade = new PicaretaEntidade();
 
         System.out.println("""
                   ╔════════════════════════════════════════════════════════════════════╗
@@ -15,18 +16,26 @@ public class Main {
                 """);
 
         //Fabricar
-        String picareta1 = picaretaService.Fabricar(Materiais.MADEIRA);
+        String picaretaMadeira = picaretaService.Fabricar(Materiais.MADEIRA);
 
-        String picareta2 = picaretaService.Fabricar(Materiais.PEDRA);
+        String picaretaPedra = picaretaService.Fabricar(Materiais.PEDRA);
 
-        String picareta3 = picaretaService.Fabricar(Materiais.FERRO);
+        String picaretaFerro = picaretaService.Fabricar(Materiais.FERRO);
 
-//        System.out.println("\nPicaretas no inventario:");
-//        for (String picareta : picaretaService){
-//            System.out.println(" • " + picareta);
-//        }
+        String picaretaOuro = picaretaService.Fabricar(Materiais.OURO);
 
-        //Minera
+        System.out.println("\nPicaretas fabricadas:");
+        for (PicaretaEntidade picareta : picaretaEntidade.getPicaretas()){
+            System.out.println(" • " + picareta.getNome());
+        }
+
+        //Minerar
+        PicaretaEntidade picaretaStream = picaretaEntidade.getPicaretas().stream()
+                .filter(picareta -> picareta.getNome().equalsIgnoreCase("Picareta de ouro"))
+                .findFirst()
+                .orElse(null);
+
+        int novaDurabilidade = picaretaService.Minerar(picaretaStream.getMaterial(),picaretaStream.getDurabilidade(), picaretaStream.getForca(), picaretaStream.getBlocos());
 
         //Reparar
 

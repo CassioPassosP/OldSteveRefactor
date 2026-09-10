@@ -7,7 +7,8 @@ import interfaces.Ferramenta;
 public class PicaretaServico implements Ferramenta {
     PicaretaEntidade picaretaEntidade = new PicaretaEntidade();
 
-    public static int Minerar(Materiais material, int durabilidade, int forca, int blocos) {
+    @Override
+    public int Minerar(Materiais material, int durabilidade, int forca, int blocos) {
         System.out.println("\n=== MINERANDO COM PICARETA DE " + material + " ===");
         System.out.println("Durabilidade atual: " + durabilidade);
         System.out.println("Força: " + forca);
@@ -34,7 +35,7 @@ public class PicaretaServico implements Ferramenta {
         System.out.println("Durabilidade restante: " + durabilidadeRestante);
 
         if (durabilidadeRestante <= 0) {
-            System.out.println(" A picareta de " + material + " quebrou completamente!");
+            System.out.println(" A picareta de " + material.name().toLowerCase() + " quebrou completamente!");
         }
 
         return durabilidadeRestante;
@@ -49,8 +50,8 @@ public class PicaretaServico implements Ferramenta {
             case "madeira" -> durabilidade = 50;
             case "pedra" -> durabilidade = 70;
             case "ferro" -> durabilidade = 100;
-            case "ouro" -> durabilidade = 30;
-            default -> durabilidade = 0;
+            case "ouro" -> durabilidade = 31;
+            default -> durabilidade = 60;
         };
 
         System.out.println("Durabilidade: " + durabilidade);
@@ -60,7 +61,7 @@ public class PicaretaServico implements Ferramenta {
                     case "pedra" -> forca = 8;
                     case "ferro" -> forca = 12;
                     case "ouro" -> forca = 9;
-                    default -> forca = 0;
+                    default -> forca = 6;
                 };
 
         System.out.println("Força: " + forca);
@@ -75,7 +76,7 @@ public class PicaretaServico implements Ferramenta {
             case "pedra" -> blocos = 20;
             case "ferro" -> blocos = 40;
             case "ouro" -> blocos = 30;
-            default -> blocos = 0;
+            default -> blocos = 19;
         };
 
         System.out.println("Picareta de " + material.name().toLowerCase() + " fabricada com sucesso!");
@@ -94,15 +95,14 @@ public class PicaretaServico implements Ferramenta {
         System.out.println("Quantidade a reparar: " + quantidade);
 
         int durabilidadeNova = durabilidadeAtual + quantidade;
-        int limiteMaximo = 0;
 
-        switch (material.name().toLowerCase()) {
-            case "madeira": limiteMaximo = 50; break;
-            case "pedra": limiteMaximo = 70; break;
-            case "ferro": limiteMaximo = 100; break;
-            case "ouro": limiteMaximo = 30; break;
-            default: limiteMaximo = 60;
-        }
+        int limiteMaximo = switch (material.name().toLowerCase()) {
+            case "madeira" -> limiteMaximo = 50;
+            case "pedra" -> limiteMaximo = 70;
+            case "ferro" -> limiteMaximo = 100;
+            case "ouro" -> limiteMaximo = 30;
+            default -> limiteMaximo = 60;
+        };
 
         if (durabilidadeNova > limiteMaximo) {
             System.out.println(" Reparo limitado a " + limiteMaximo);

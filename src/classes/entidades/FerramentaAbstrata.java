@@ -3,35 +3,35 @@ package classes.entidades;
 import enums.Materiais;
 
 public class FerramentaAbstrata {
-    private String name;
-    private int durability;
+    private String nome;
+    private int durabilidade;
     private int forca;
-    private static Materiais materials;
+    private static Materiais material;
 
     public FerramentaAbstrata() {
     }
 
-    public FerramentaAbstrata(String name, int durability, Materiais materials, int forca) {
-        this.name = name;
-        this.durability = durability;
+    public FerramentaAbstrata(String nome, int durabilidade, Materiais material, int forca) {
+        this.nome = nome;
+        this.durabilidade = durabilidade;
         this.forca = forca;
-        FerramentaAbstrata.materials = materials;
+        FerramentaAbstrata.material = material;
     }
 
-    public String getName() {
-        return name;
+    public String getNome() {
+        return nome;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public int getDurability() {
-        return durability;
+    public int getDurabilidade() {
+        return durabilidade;
     }
 
-    public void setDurability(int durability) {
-        this.durability = durability;
+    public void setDurabilidade(int durabilidade) {
+        this.durabilidade = durabilidade;
     }
 
     public int getForca() {
@@ -42,11 +42,11 @@ public class FerramentaAbstrata {
         this.forca = forca;
     }
 
-    public static Materiais getMaterials() {
-        return materials;
+    public Materiais getMaterial() {
+        return material;
     }
 
-    public void setMaterials(Materiais materials) {
-        FerramentaAbstrata.materials = materials;
+    public void setMaterial(Materiais material) {
+        FerramentaAbstrata.material = material;
     }
 }

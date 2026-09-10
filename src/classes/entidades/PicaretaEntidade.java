@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PicaretaEntidade extends FerramentaAbstrata {
-    List<PicaretaEntidade> picaretas = new ArrayList<>();
+    private static final List<PicaretaEntidade> picaretas = new ArrayList<>();
     private int blocos;
 
     public PicaretaEntidade() {
@@ -18,11 +18,15 @@ public class PicaretaEntidade extends FerramentaAbstrata {
     }
 
     public List<PicaretaEntidade> getPicaretas() {
-        return picaretas;
+        return this.picaretas;
     }
 
-    public void setPicaretas(PicaretaEntidade picaretas) {
-        this.picaretas.add(picaretas);
+    public void setPicaretas(PicaretaEntidade picareta) {
+        this.picaretas.add(picareta);
+    }
+
+    public int getBlocos() {
+        return blocos;
     }
 
     public void setBlocos(int blocos) {
