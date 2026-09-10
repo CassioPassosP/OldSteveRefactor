@@ -38,7 +38,7 @@ public class Main {
         int novaDurabilidade = picaretaService.Minerar(picaretaStream.getNome(), picaretaStream.getMaterial(),picaretaStream.getDurabilidade(), picaretaStream.getForca(), picaretaStream.getBlocos());
 
         //Reparar
-        int reparar = picaretaService.Reparar(picaretaStream.getNome(), picaretaStream.getMaterial(),picaretaStream.getDurabilidade(), 45);
+        int reparar = picaretaService.Reparar(picaretaStream.getNome(), picaretaStream.getMaterial(),picaretaStream.getDurabilidade(), 29);
 
         //Estado final
         System.out.println("\nEstado final das picaretas:");
