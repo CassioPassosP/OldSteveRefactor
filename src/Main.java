@@ -1,11 +1,12 @@
 import classes.entidades.PicaretaEntidade;
+import classes.repositorio.PicaretaRepositorio;
 import classes.services.PicaretaServico;
 import enums.Materiais;
 
 public class Main {
     public static void main(String[] args) {
-        PicaretaServico picaretaService = new PicaretaServico();
-        PicaretaEntidade picaretaEntidade = new PicaretaEntidade();
+        PicaretaRepositorio picaretaRepositorio = new PicaretaRepositorio();
+        PicaretaServico picaretaService = new PicaretaServico(picaretaRepositorio);
 
         System.out.println("""
                   ╔════════════════════════════════════════════════════════════════════╗
@@ -23,12 +24,12 @@ public class Main {
         String picaretaOuro = picaretaService.Fabricar(Materiais.OURO);
 
         System.out.println("\nPicaretas fabricadas:");
-        for (PicaretaEntidade picareta : picaretaEntidade.getPicaretas()){
+        for (PicaretaEntidade picareta : picaretaRepositorio.listar()){
             System.out.println(" • " + picareta.getNome());
         }
 
         //Minerar
-        PicaretaEntidade picaretaStream = picaretaEntidade.getPicaretas().stream()
+        PicaretaEntidade picaretaStream = picaretaRepositorio.listar().stream()
                 .filter(picareta -> picareta.getNome().equalsIgnoreCase("Picareta de ouro"))
                 .findFirst()
                 .orElse(null);
@@ -40,7 +41,7 @@ public class Main {
 
         //Estado final
         System.out.println("\nEstado final das picaretas:");
-        for (PicaretaEntidade picareta : picaretaEntidade.getPicaretas()){
+        for (PicaretaEntidade picareta : picaretaRepositorio.listar()){
             System.out.println(" • " + picareta.toString());
         }
 

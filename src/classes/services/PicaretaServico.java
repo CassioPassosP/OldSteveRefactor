@@ -1,11 +1,16 @@
 package classes.services;
 
 import classes.entidades.PicaretaEntidade;
+import classes.repositorio.PicaretaRepositorio;
 import enums.Materiais;
 import interfaces.FerramentaColeta;
 
 public class PicaretaServico implements FerramentaColeta {
-    PicaretaEntidade picaretaEntidade = new PicaretaEntidade();
+    private final PicaretaRepositorio repositorio;
+
+    public PicaretaServico(PicaretaRepositorio repositorio) {
+        this.repositorio = repositorio;
+    }
 
     @Override
     public int Minerar(String nome,Materiais material, int durabilidade, int forca, int blocos) {
@@ -14,7 +19,7 @@ public class PicaretaServico implements FerramentaColeta {
         System.out.println("Força: " + forca);
         System.out.println("Blocos a minerar: " + blocos);
 
-        PicaretaEntidade picaretaSelecionada = picaretaEntidade.getPicaretas().stream()
+        PicaretaEntidade picaretaSelecionada = repositorio.listar().stream()
                 .filter(picareta -> picareta.getNome().equalsIgnoreCase(nome))
                 .findFirst()
                 .orElse(null);
@@ -89,7 +94,7 @@ public class PicaretaServico implements FerramentaColeta {
         String nome = "Picareta de " + material.name().toLowerCase() ;
 
         PicaretaEntidade picaretaCriada = new PicaretaEntidade(nome,durabilidade, material, blocos, forca);
-        picaretaEntidade.setPicaretas(picaretaCriada);
+        repositorio.adicionar(picaretaCriada);
 
         return "Picareta de " + material + " (D: " + durabilidade + ", F: " + forca + ")";
     }
@@ -100,7 +105,7 @@ public class PicaretaServico implements FerramentaColeta {
         System.out.println("Durabilidade atual: " + durabilidadeAtual);
         System.out.println("Quantidade a reparar: " + quantidade);
 
-        PicaretaEntidade picaretaSelecionada = picaretaEntidade.getPicaretas().stream()
+        PicaretaEntidade picaretaSelecionada = repositorio.listar().stream()
                 .filter(picareta -> picareta.getNome().equalsIgnoreCase(nome))
                 .findFirst()
                 .orElse(null);
