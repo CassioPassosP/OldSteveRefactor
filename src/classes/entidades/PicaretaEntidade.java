@@ -5,7 +5,7 @@ import enums.Materiais;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PicaretaEntidade extends FerramentaAbstrata {
+public class PicaretaEntidade extends FerramentaColetaAbstrata {
     private static final List<PicaretaEntidade> picaretas = new ArrayList<>();
     private int blocos;
 

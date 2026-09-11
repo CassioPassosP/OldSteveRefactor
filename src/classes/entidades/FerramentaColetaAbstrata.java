@@ -2,20 +2,20 @@ package classes.entidades;
 
 import enums.Materiais;
 
-public class FerramentaAbstrata {
+public abstract class FerramentaColetaAbstrata {
     private String nome;
     private int durabilidade;
     private int forca;
     private static Materiais material;
 
-    public FerramentaAbstrata() {
+    public FerramentaColetaAbstrata() {
     }
 
-    public FerramentaAbstrata(String nome, int durabilidade, Materiais material, int forca) {
+    public FerramentaColetaAbstrata(String nome, int durabilidade, Materiais material, int forca) {
         this.nome = nome;
         this.durabilidade = durabilidade;
         this.forca = forca;
-        FerramentaAbstrata.material = material;
+        FerramentaColetaAbstrata.material = material;
     }
 
     public String getNome() {
@@ -47,7 +47,7 @@ public class FerramentaAbstrata {
     }
 
     public void setMaterial(Materiais material) {
-        FerramentaAbstrata.material = material;
+        FerramentaColetaAbstrata.material = material;
     }
 
     @Override

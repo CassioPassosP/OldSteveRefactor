@@ -2,8 +2,6 @@ import classes.entidades.PicaretaEntidade;
 import classes.services.PicaretaServico;
 import enums.Materiais;
 
-import java.util.ArrayList;
-
 public class Main {
     public static void main(String[] args) {
         PicaretaServico picaretaService = new PicaretaServico();
