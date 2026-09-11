@@ -6,7 +6,7 @@ public abstract class FerramentaColetaAbstrata {
     private String nome;
     private int durabilidade;
     private int forca;
-    private static Materiais material;
+    private Materiais material;
 
     public FerramentaColetaAbstrata() {
     }
@@ -15,7 +15,7 @@ public abstract class FerramentaColetaAbstrata {
         this.nome = nome;
         this.durabilidade = durabilidade;
         this.forca = forca;
-        FerramentaColetaAbstrata.material = material;
+        this.material = material;
     }
 
     public String getNome() {
@@ -47,7 +47,7 @@ public abstract class FerramentaColetaAbstrata {
     }
 
     public void setMaterial(Materiais material) {
-        FerramentaColetaAbstrata.material = material;
+        this.material = material;
     }
 
     @Override

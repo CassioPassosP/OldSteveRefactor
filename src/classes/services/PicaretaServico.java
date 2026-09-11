@@ -1,10 +1,10 @@
 package classes.services;
 
 import classes.entidades.PicaretaEntidade;
-import interfaces.Ferramenta;
 import enums.Materiais;
+import interfaces.FerramentaColeta;
 
-public class PicaretaServico implements Ferramenta.FerramentaColeta {
+public class PicaretaServico implements FerramentaColeta {
     PicaretaEntidade picaretaEntidade = new PicaretaEntidade();
 
     @Override
